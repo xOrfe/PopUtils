@@ -1,10 +1,10 @@
 {
-	"displayName": "Entityween",
-	"name": "com.xorfe.entityween",
+	"displayName": "PopUtils",
+	"name": "com.xorfe.poputils",
 	"version": "0.1.0",
 	"unity": "6.0",
 	"description": "Tweening utilities for Unity dots",
-	"keywords": [ "unity", "tween", "dots" ],
+	"keywords": [ "unity", "dots", "math", "collections", "transforms" ],
 	"category": "Repository category",
 	"author": {
 		"name": "xOrfe"
