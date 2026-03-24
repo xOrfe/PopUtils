@@ -1,16 +1,19 @@
 {
-	"displayName": "PopUtils",
-	"name": "com.xorfe.poputils",
-	"version": "0.1.0",
-	"unity": "6.0",
-	"description": "Tweening utilities for Unity dots",
-	"keywords": [ "unity", "dots", "math", "collections", "transforms" ],
-	"category": "Repository category",
-	"author": {
-		"name": "xOrfe"
-	},
-	"dependencies": {
-	},
-	"scopedRegistries": [
-	]
+  "displayName": "PopUtils",
+  "name": "com.xorfe.poputils",
+  "version": "0.1.0",
+  "unity": "6000.0",
+  "description": "Tweening utilities for Unity dots",
+  "keywords": [
+    "unity",
+    "dots",
+    "math",
+    "collections",
+    "transforms"
+  ],
+  "category": "Repository category",
+  "author": {
+    "name": "xOrfe"
+  },
+  "scopedRegistries": []
 }
