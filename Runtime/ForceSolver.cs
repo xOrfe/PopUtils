@@ -11,6 +11,12 @@ namespace XO.PopUtils
             public float3 LinearForce;
             public float3 Torque;
             
+            public ForceResult(float3 linearForce, float3 torque)
+            {
+                LinearForce = linearForce;
+                Torque = torque;
+            }
+            
             public static ForceResult operator +(ForceResult a, ForceResult b)
             {
                 return new ForceResult
@@ -31,7 +37,7 @@ namespace XO.PopUtils
         }
 
         public static ForceResult SolveForces(
-            NativeList<Ray> forces,
+            NativeList<Force> forces,
             float3 centerOfMass)
         {
             float3 totalForce = float3.zero;
@@ -39,10 +45,10 @@ namespace XO.PopUtils
 
             for (int i = 0; i < forces.Length; i++)
             {
-                Ray ray = forces[i];
+                Force current = forces[i];
 
-                float3 force = ray.Direction;
-                float3 applicationPoint = ray.Origin;
+                float3 force = current.Direction;
+                float3 applicationPoint = current.Origin;
 
                 float3 r = applicationPoint - centerOfMass;
 
