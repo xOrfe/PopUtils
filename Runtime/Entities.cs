@@ -1,30 +1,34 @@
-﻿using Unity.Entities;
+using Unity.Entities;
 using Unity.Transforms;
+using System.Runtime.CompilerServices;
 
 namespace XO.PopUtils
 {
     public static partial class Pop
     {
-        public static void SetParent(this Entity entity, EntityManager em, EntityCommandBuffer ecb, Entity parent)
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetParent(this ref EntityCommandBuffer ecb, EntityManager em, Entity entity, Entity parent)
         {
             if (em.HasComponent<Parent>(entity))
             {
-                ecb.SetComponent(entity, new Parent
-                {
-                    Value = parent
-                });
+                ecb.SetComponent(entity, new Parent { Value = parent });
             }
             else
             {
-                ecb.AddComponent(entity, new Parent
-                {
-                    Value = parent
-                });
+                ecb.AddComponent(entity, new Parent { Value = parent });
             }
+        }
 
-            if (!em.HasComponent<LocalTransform>(entity))
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static void SetParent(this EntityManager em, Entity entity, Entity parent)
+        {
+            if (em.HasComponent<Parent>(entity))
             {
-                ecb.AddComponent(entity, LocalTransform.Identity);
+                em.SetComponentData(entity, new Parent { Value = parent });
+            }
+            else
+            {
+                em.AddComponentData(entity, new Parent { Value = parent });
             }
         }
     }

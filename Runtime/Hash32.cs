@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 
 namespace XO.PopUtils
 {
-    [BurstCompile]
     public static partial class Pop
     {
         private const uint FnvOffsetBasis = 2166136261u;
@@ -45,7 +44,7 @@ namespace XO.PopUtils
 
         [BurstCompile]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Hash32(NativeArray<byte> bytes)
+        public static uint Hash32(in NativeArray<byte> bytes)
         {
             unchecked
             {

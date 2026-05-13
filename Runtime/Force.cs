@@ -1,26 +1,13 @@
-﻿using System.Runtime.CompilerServices;
+using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 
 namespace XO.PopUtils
 {
     public struct Force
     {
-        public float3 Origin
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            set;
-        }
+        public float3 Origin;
+        public float3 Direction;
 
-        public float3 Direction
-        {
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get;
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            set;
-        }
-        
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Force(float3 origin, float3 direction)
         {

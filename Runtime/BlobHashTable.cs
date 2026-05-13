@@ -1,7 +1,8 @@
-﻿using Unity.Entities;
+using Unity.Entities;
 using Unity.Collections;
 using Unity.Burst;
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace XO.PopUtils
@@ -18,14 +19,17 @@ namespace XO.PopUtils
         public T this[int index] => _values[index];
 
         [BurstCompile]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public T GetValue(uint key)
         {
             bool state = TryGetValue(key, out var value);
-            Debug.LogError("Key not found: " + key + "");
+            if (!state)
+                Debug.LogError("Key not found: " + key);
             return state ? value : default;
         }
 
         [BurstCompile]
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool TryGetValue(uint key, out T value)
         {
             var index = Pop.BinarySearch(ref _keys, key);
@@ -46,6 +50,12 @@ namespace XO.PopUtils
                 throw new ArgumentException("Keys and values length mismatch");
 
             Array.Sort(keys, values);
+
+            for (int i = 1; i < keys.Length; i++)
+            {
+                if (keys[i] == keys[i - 1])
+                    throw new ArgumentException($"Duplicate hash detected for key: {keys[i]}. Hash collisions are not supported.");
+            }
 
             var builder = new BlobBuilder(Allocator.Temp);
             ref var root = ref builder.ConstructRoot<BlobHashTable<T>>();

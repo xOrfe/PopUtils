@@ -9,7 +9,7 @@ namespace XO.PopUtils
     {
         [BurstCompile]
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int BinarySearch(NativeArray<uint> keys, uint key)
+        public static int BinarySearch(in NativeArray<uint> keys, uint key)
         {
             var left = 0;
             var right = keys.Length - 1;
