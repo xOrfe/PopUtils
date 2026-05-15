@@ -1,10 +1,9 @@
-# 🌟 PopUtils 🌟
 
 Simple utility package for unity dots.
 
 ---
 
-## 🧩 Dependencies
+##  Dependencies
 
 > Make sure your Unity project has these installed
 
@@ -16,5 +15,3 @@ com.unity.mathematics
 ```
 
 ---
-
-Stay tuned! 💌
