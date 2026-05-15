@@ -39,7 +39,7 @@ namespace XO.PopUtils
 
         [BurstCompile]
         public static ForceResult SolveForces(
-            in NativeArray<Force> forces,
+            in NativeList<Force> forces,
             float3 centerOfMass)
         {
             var totalForce = float3.zero;
